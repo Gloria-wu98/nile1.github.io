@@ -1,0 +1,180 @@
+{\rtf1\ansi\ansicpg950\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red19\green19\blue19;\red255\green255\blue255;\red184\green113\blue248;
+\red203\green203\blue202;\red54\green192\blue160;\red212\green212\blue212;\red112\green192\blue130;\red109\green115\blue120;
+\red245\green123\blue47;\red238\green46\blue55;}
+{\*\expandedcolortbl;;\cssrgb\c9832\c9831\c9819;\cssrgb\c100000\c100000\c100000\c0;\cssrgb\c77746\c54642\c98035;
+\cssrgb\c83320\c83320\c83112;\cssrgb\c23989\c78963\c69075;\cssrgb\c86465\c86464\c86248;\cssrgb\c50437\c78684\c58115;\cssrgb\c50336\c52696\c54531;
+\cssrgb\c97756\c56070\c23668;\cssrgb\c95666\c27714\c27475;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12720\viewh7240\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs28 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec4 import\cf2 \strokec5  \cf2 \strokec6 React\cf2 \strokec7 ,\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5  useState \cf2 \strokec7 \}\cf2 \strokec5  \cf2 \strokec4 from\cf2 \strokec5  \cf2 \strokec8 'react'\cf2 \strokec7 ;\cf2 \strokec5 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec9 // Main App Component for "Crest of the Royal Family" Manga Cover Generator\cf2 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec4 export\cf2 \strokec5  \cf2 \strokec4 default\cf2 \strokec5  \cf2 \strokec4 function\cf2 \strokec5  \cf2 \strokec6 App\cf2 \strokec7 ()\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  \cf2 \strokec7 [\cf2 \strokec5 prompt\cf2 \strokec7 ,\cf2 \strokec5  setPrompt\cf2 \strokec7 ]\cf2 \strokec5  \cf2 \strokec7 =\cf2 \strokec5  useState\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  \cf2 \strokec7 [\cf2 \strokec5 loading\cf2 \strokec7 ,\cf2 \strokec5  setLoading\cf2 \strokec7 ]\cf2 \strokec5  \cf2 \strokec7 =\cf2 \strokec5  useState\cf2 \strokec7 (\cf2 \strokec4 false\cf2 \strokec7 );\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  \cf2 \strokec7 [\cf2 \strokec5 imageUrl\cf2 \strokec7 ,\cf2 \strokec5  setImageUrl\cf2 \strokec7 ]\cf2 \strokec5  \cf2 \strokec7 =\cf2 \strokec5  useState\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  \cf2 \strokec7 [\cf2 \strokec5 optimizedPrompt\cf2 \strokec7 ,\cf2 \strokec5  setOptimizedPrompt\cf2 \strokec7 ]\cf2 \strokec5  \cf2 \strokec7 =\cf2 \strokec5  useState\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  \cf2 \strokec7 [\cf2 \strokec5 error\cf2 \strokec7 ,\cf2 \strokec5  setError\cf2 \strokec7 ]\cf2 \strokec5  \cf2 \strokec7 =\cf2 \strokec5  useState\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+\
+  \cf2 \strokec9 // Function to handle the image generation process\cf2 \strokec5 \
+  \cf2 \strokec4 const\cf2 \strokec5  handleGenerate \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec4 async\cf2 \strokec5  \cf2 \strokec7 ()\cf2 \strokec5  \cf2 \strokec7 =>\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+    \cf2 \strokec4 if\cf2 \strokec5  \cf2 \strokec7 (!\cf2 \strokec5 prompt\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+      setError\cf2 \strokec7 (\cf2 \strokec8 '\uc0\u35531 \u20808 \u36664 \u20837 \u24744 \u30340 \u23553 \u38754 \u24819 \u27861 \u65281 '\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec4 return\cf2 \strokec7 ;\cf2 \strokec5 \
+    \cf2 \strokec7 \}\cf2 \strokec5 \
+    setError\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+    setLoading\cf2 \strokec7 (\cf2 \strokec4 true\cf2 \strokec7 );\cf2 \strokec5 \
+    setImageUrl\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+    setOptimizedPrompt\cf2 \strokec7 (\cf2 \strokec8 ''\cf2 \strokec7 );\cf2 \strokec5 \
+\
+    \cf2 \strokec4 try\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+      \cf2 \strokec9 // Step 1: Optimize the user prompt into a detailed English prompt for a "Crest of the Royal Family" style cover.\cf2 \strokec5 \
+      \cf2 \strokec4 const\cf2 \strokec5  optimizationPrompt \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec8 `\cf2 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec8         Please translate and expand the following user request into a detailed, high-quality English prompt for an image generation model. \cf2 \strokec5 \
+\cf2 \strokec8         The goal is to create a manga cover that perfectly captures the style of "Crest of the Royal Family" (Ouke no Monshou / Daughter of the Nile) by Chieko Hosokawa.\cf2 \strokec5 \
+\cf2 \strokec8         The prompt must be very descriptive, including details about:\cf2 \strokec5 \
+\cf2 \strokec8         1.  **Character:** Describe the characters (like Carol and Memphis) with their iconic appearances. Carol with blonde hair and blue eyes, often in elegant white ancient Egyptian robes. Memphis as a powerful, handsome pharaoh with black hair, dark eyes, and royal attire. Focus on their expressions\'97dramatic, romantic, or regal.\cf2 \strokec5 \
+\cf2 \strokec8         2.  **Background:** The setting must be Ancient Egypt. Describe locations like the Nile River, a grand palace, desert landscapes with pyramids, or ornate temple interiors. Specify the atmosphere: romantic sunset, mysterious night, or bright sunny day.\cf2 \strokec5 \
+\cf2 \strokec8         3.  **Art Style:** This is crucial. Specify "classic 1970s sh\uc0\u333 jo manga style", "in the art style of Chieko Hosokawa's 'Crest of the Royal Family'", "detailed and ornate line art", "vintage anime aesthetic", "use of soft watercolors and screentones", "large expressive eyes with intricate details", and "dramatic, romantic composition". The art should feel nostalgic and classic.\cf2 \strokec5 \
+\cf2 \strokec8         4.  **Composition:** Mention dynamic and romantic poses, such as an embrace, looking into the distance together, or a majestic royal pose. Include elements like wind-swept hair and clothing, soft lighting, and decorative floral or patterned borders common in sh\uc0\u333 jo manga covers.\cf2 \strokec5 \
+\
+\cf2 \strokec8         User Request: "\cf2 \strokec7 $\{\cf2 \strokec5 prompt\cf2 \strokec7 \}\cf2 \strokec8 "\cf2 \strokec5 \
+\
+\cf2 \strokec8         Return ONLY the final, optimized English prompt, ready for the image model.\cf2 \strokec5 \
+\cf2 \strokec8       `\cf2 \strokec7 ;\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 let\cf2 \strokec5  chatHistory \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec7 [\{\cf2 \strokec5  role\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 "user"\cf2 \strokec7 ,\cf2 \strokec5  parts\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec7 [\{\cf2 \strokec5  text\cf2 \strokec7 :\cf2 \strokec5  optimizationPrompt \cf2 \strokec7 \}]\cf2 \strokec5  \cf2 \strokec7 \}];\cf2 \strokec5 \
+      \cf2 \strokec4 const\cf2 \strokec5  payloadForOptimization \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5  contents\cf2 \strokec7 :\cf2 \strokec5  chatHistory \cf2 \strokec7 \};\cf2 \strokec5 \
+      \cf2 \strokec4 const\cf2 \strokec5  apiKey \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec8 ""\cf2 \strokec7 ;\cf2 \strokec5  \cf2 \strokec9 // API key will be handled by the environment\cf2 \strokec5 \
+      \cf2 \strokec4 const\cf2 \strokec5  apiUrlForOptimization \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec8 `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=\cf2 \strokec7 $\{\cf2 \strokec5 apiKey\cf2 \strokec7 \}\cf2 \strokec8 `\cf2 \strokec7 ;\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 const\cf2 \strokec5  optimizationResponse \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec4 await\cf2 \strokec5  fetch\cf2 \strokec7 (\cf2 \strokec5 apiUrlForOptimization\cf2 \strokec7 ,\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        method\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 'POST'\cf2 \strokec7 ,\cf2 \strokec5 \
+        headers\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5  \cf2 \strokec8 'Content-Type'\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 'application/json'\cf2 \strokec5  \cf2 \strokec7 \},\cf2 \strokec5 \
+        body\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec6 JSON\cf2 \strokec7 .\cf2 \strokec5 stringify\cf2 \strokec7 (\cf2 \strokec5 payloadForOptimization\cf2 \strokec7 )\cf2 \strokec5 \
+      \cf2 \strokec7 \});\cf2 \strokec5 \
+\
+      \cf2 \strokec4 if\cf2 \strokec5  \cf2 \strokec7 (!\cf2 \strokec5 optimizationResponse\cf2 \strokec7 .\cf2 \strokec5 ok\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        \cf2 \strokec4 throw\cf2 \strokec5  \cf2 \strokec4 new\cf2 \strokec5  \cf2 \strokec6 Error\cf2 \strokec7 (\cf2 \strokec8 '\uc0\u20778 \u21270 \u25552 \u31034 \u35422 \u26178 \u30332 \u29983 \u37679 \u35492 \u12290 '\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec7 \}\cf2 \strokec5 \
+\
+      \cf2 \strokec4 const\cf2 \strokec5  optimizationResult \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec4 await\cf2 \strokec5  optimizationResponse\cf2 \strokec7 .\cf2 \strokec5 json\cf2 \strokec7 ();\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 if\cf2 \strokec5  \cf2 \strokec7 (!\cf2 \strokec5 optimizationResult\cf2 \strokec7 .\cf2 \strokec5 candidates \cf2 \strokec7 ||\cf2 \strokec5  \cf2 \strokec7 !\cf2 \strokec5 optimizationResult\cf2 \strokec7 .\cf2 \strokec5 candidates\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 content\cf2 \strokec7 .\cf2 \strokec5 parts\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 text\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        \cf2 \strokec4 throw\cf2 \strokec5  \cf2 \strokec4 new\cf2 \strokec5  \cf2 \strokec6 Error\cf2 \strokec7 (\cf2 \strokec8 '\uc0\u28961 \u27861 \u24478  AI \u29554 \u21462 \u20778 \u21270 \u24460 \u30340 \u25552 \u31034 \u35422 \u12290 '\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec7 \}\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 const\cf2 \strokec5  generatedOptimizedPrompt \cf2 \strokec7 =\cf2 \strokec5  optimizationResult\cf2 \strokec7 .\cf2 \strokec5 candidates\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 content\cf2 \strokec7 .\cf2 \strokec5 parts\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 text\cf2 \strokec7 .\cf2 \strokec5 trim\cf2 \strokec7 ();\cf2 \strokec5 \
+      setOptimizedPrompt\cf2 \strokec7 (\cf2 \strokec5 generatedOptimizedPrompt\cf2 \strokec7 );\cf2 \strokec5 \
+\
+\
+      \cf2 \strokec9 // Step 2: Generate the image using the optimized prompt\cf2 \strokec5 \
+      \cf2 \strokec4 const\cf2 \strokec5  payloadForImage \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        instances\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec7 [\{\cf2 \strokec5  prompt\cf2 \strokec7 :\cf2 \strokec5  generatedOptimizedPrompt \cf2 \strokec7 \}],\cf2 \strokec5 \
+        parameters\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+          sampleCount\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec10 1\cf2 \strokec7 ,\cf2 \strokec5 \
+          aspectRatio\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 "9:16"\cf2 \strokec5  \cf2 \strokec9 // Aspect ratio for manga/novel covers\cf2 \strokec5 \
+        \cf2 \strokec7 \}\cf2 \strokec5 \
+      \cf2 \strokec7 \};\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 const\cf2 \strokec5  apiUrlForImage \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec8 `https://generativelanguage.googleapis.com/v1beta/models/imagen-3.0-generate-002:predict?key=\cf2 \strokec7 $\{\cf2 \strokec5 apiKey\cf2 \strokec7 \}\cf2 \strokec8 `\cf2 \strokec7 ;\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 const\cf2 \strokec5  imageResponse \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec4 await\cf2 \strokec5  fetch\cf2 \strokec7 (\cf2 \strokec5 apiUrlForImage\cf2 \strokec7 ,\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        method\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 'POST'\cf2 \strokec7 ,\cf2 \strokec5 \
+        headers\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5  \cf2 \strokec8 'Content-Type'\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 'application/json'\cf2 \strokec5  \cf2 \strokec7 \},\cf2 \strokec5 \
+        body\cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec6 JSON\cf2 \strokec7 .\cf2 \strokec5 stringify\cf2 \strokec7 (\cf2 \strokec5 payloadForImage\cf2 \strokec7 )\cf2 \strokec5 \
+      \cf2 \strokec7 \});\cf2 \strokec5 \
+      \
+      \cf2 \strokec4 if\cf2 \strokec5  \cf2 \strokec7 (!\cf2 \strokec5 imageResponse\cf2 \strokec7 .\cf2 \strokec5 ok\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        \cf2 \strokec4 throw\cf2 \strokec5  \cf2 \strokec4 new\cf2 \strokec5  \cf2 \strokec6 Error\cf2 \strokec7 (\cf2 \strokec8 '\uc0\u29983 \u25104 \u22294 \u29255 \u26178 \u30332 \u29983 \u37679 \u35492 \u12290 '\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec7 \}\cf2 \strokec5 \
+\
+      \cf2 \strokec4 const\cf2 \strokec5  imageResult \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec4 await\cf2 \strokec5  imageResponse\cf2 \strokec7 .\cf2 \strokec5 json\cf2 \strokec7 ();\cf2 \strokec5 \
+\
+      \cf2 \strokec4 if\cf2 \strokec5  \cf2 \strokec7 (\cf2 \strokec5 imageResult\cf2 \strokec7 .\cf2 \strokec5 predictions \cf2 \strokec7 &&\cf2 \strokec5  imageResult\cf2 \strokec7 .\cf2 \strokec5 predictions\cf2 \strokec7 .\cf2 \strokec5 length \cf2 \strokec7 >\cf2 \strokec5  \cf2 \strokec10 0\cf2 \strokec5  \cf2 \strokec7 &&\cf2 \strokec5  imageResult\cf2 \strokec7 .\cf2 \strokec5 predictions\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 bytesBase64Encoded\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        \cf2 \strokec4 const\cf2 \strokec5  generatedImageUrl \cf2 \strokec7 =\cf2 \strokec5  \cf2 \strokec8 `data:image/png;base64,\cf2 \strokec7 $\{\cf2 \strokec5 imageResult\cf2 \strokec7 .\cf2 \strokec5 predictions\cf2 \strokec7 [\cf2 \strokec10 0\cf2 \strokec7 ].\cf2 \strokec5 bytesBase64Encoded\cf2 \strokec7 \}\cf2 \strokec8 `\cf2 \strokec7 ;\cf2 \strokec5 \
+        setImageUrl\cf2 \strokec7 (\cf2 \strokec5 generatedImageUrl\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec7 \}\cf2 \strokec5  \cf2 \strokec4 else\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+        \cf2 \strokec4 throw\cf2 \strokec5  \cf2 \strokec4 new\cf2 \strokec5  \cf2 \strokec6 Error\cf2 \strokec7 (\cf2 \strokec8 '\uc0\u22294 \u29255 \u29983 \u25104 \u22833 \u25943 \u65292 \u26410 \u25910 \u21040 \u26377 \u25928 \u30340 \u22294 \u29255 \u36039 \u26009 \u12290 '\cf2 \strokec7 );\cf2 \strokec5 \
+      \cf2 \strokec7 \}\cf2 \strokec5 \
+\
+    \cf2 \strokec7 \}\cf2 \strokec5  \cf2 \strokec4 catch\cf2 \strokec5  \cf2 \strokec7 (\cf2 \strokec5 err\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+      setError\cf2 \strokec7 (\cf2 \strokec5 err\cf2 \strokec7 .\cf2 \strokec5 message \cf2 \strokec7 ||\cf2 \strokec5  \cf2 \strokec8 '\uc0\u30332 \u29983 \u26410 \u30693 \u37679 \u35492 \u65292 \u35531 \u31245 \u24460 \u20877 \u35430 \u12290 '\cf2 \strokec7 );\cf2 \strokec5 \
+      console\cf2 \strokec7 .\cf2 \strokec5 error\cf2 \strokec7 (\cf2 \strokec5 err\cf2 \strokec7 );\cf2 \strokec5 \
+    \cf2 \strokec7 \}\cf2 \strokec5  \cf2 \strokec4 finally\cf2 \strokec5  \cf2 \strokec7 \{\cf2 \strokec5 \
+      setLoading\cf2 \strokec7 (\cf2 \strokec4 false\cf2 \strokec7 );\cf2 \strokec5 \
+    \cf2 \strokec7 \}\cf2 \strokec5 \
+  \cf2 \strokec7 \};\cf2 \strokec5 \
+\
+  \cf2 \strokec4 return\cf2 \strokec5  \cf2 \strokec7 (\cf2 \strokec5 \
+    \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "bg-gray-900 text-white min-h-screen flex flex-col items-center p-4 font-sans"\cf2 \strokec7 >\cf2 \strokec5 \
+      \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "w-full max-w-2xl mx-auto"\cf2 \strokec7 >\cf2 \strokec5 \
+        \cf2 \strokec7 <\cf2 \strokec5 header className\cf2 \strokec7 =\cf2 \strokec8 "text-center my-8"\cf2 \strokec7 >\cf2 \strokec5 \
+          \cf2 \strokec7 <\cf2 \strokec5 h1 className\cf2 \strokec7 =\cf2 \strokec8 "text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500"\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec6 Gloria\cf2 \strokec11 \uc0\u30340 \u23612 \u32645 \u27827 \u22899 \u20818 \u28459 \u30059 \u23553 \u38754 \u29986 \u29983 \u22120 \cf2 \strokec5 \
+          \cf2 \strokec7 </\cf2 \strokec5 h1\cf2 \strokec7 >\cf2 \strokec5 \
+          \cf2 \strokec7 <\cf2 \strokec5 p className\cf2 \strokec7 =\cf2 \strokec8 "text-gray-400 mt-4"\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec11 \uc0\u36664 \u20837 \u24744 \u30340 \u38728 \u24863 \u65292 \cf2 \strokec6 AI\cf2 \strokec5  \cf2 \strokec11 \uc0\u23559 \u28858 \u24744 \u32362 \u35069 \u19968 \u24373 \u32147 \u20856 \u39080 \u26684 \u30340 \u12300 \u23612 \u32645 \u27827 \u22899 \u20818 \u12301 \u28459 \u30059 \u23553 \u38754 \u12290 \cf2 \strokec5 \
+          \cf2 \strokec7 </\cf2 \strokec5 p\cf2 \strokec7 >\cf2 \strokec5 \
+        \cf2 \strokec7 </\cf2 \strokec5 header\cf2 \strokec7 >\cf2 \strokec5 \
+\
+        \cf2 \strokec7 <\cf2 \strokec5 main className\cf2 \strokec7 =\cf2 \strokec8 "flex flex-col items-center gap-6"\cf2 \strokec7 >\cf2 \strokec5 \
+          \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "w-full"\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec7 <\cf2 \strokec5 textarea\
+              value\cf2 \strokec7 =\{\cf2 \strokec5 prompt\cf2 \strokec7 \}\cf2 \strokec5 \
+              onChange\cf2 \strokec7 =\{(\cf2 \strokec5 e\cf2 \strokec7 )\cf2 \strokec5  \cf2 \strokec7 =>\cf2 \strokec5  setPrompt\cf2 \strokec7 (\cf2 \strokec5 e\cf2 \strokec7 .\cf2 \strokec5 target\cf2 \strokec7 .\cf2 \strokec5 value\cf2 \strokec7 )\}\cf2 \strokec5 \
+              placeholder\cf2 \strokec7 =\cf2 \strokec8 "\uc0\u20363 \u22914 \u65306 \u20977 \u32645 \u29246 \u33287 \u26364 \u33778 \u22763 \u22312 \u23612 \u32645 \u27827 \u30036 \u28145 \u24773 \u30456 \u25793 \u65292 \u32972 \u26223 \u26159 \u22805 \u38525 \u19979 \u30340 \u37329 \u23383 \u22612 "\cf2 \strokec5 \
+              className\cf2 \strokec7 =\cf2 \strokec8 "w-full h-28 p-4 bg-gray-800 border-2 border-gray-700 rounded-lg focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"\cf2 \strokec5 \
+            />\
+          \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+\
+          \cf2 \strokec7 <\cf2 \strokec5 button\
+            onClick\cf2 \strokec7 =\{\cf2 \strokec5 handleGenerate\cf2 \strokec7 \}\cf2 \strokec5 \
+            disabled\cf2 \strokec7 =\{\cf2 \strokec5 loading\cf2 \strokec7 \}\cf2 \strokec5 \
+            className\cf2 \strokec7 =\cf2 \strokec8 "w-full md:w-auto px-8 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-gray-900 font-bold rounded-lg shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:scale-100 transition-transform duration-300"\cf2 \strokec5 \
+          \cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec7 \{\cf2 \strokec5 loading \cf2 \strokec7 ?\cf2 \strokec5  \cf2 \strokec8 '\uc0\u29983 \u25104 \u20013 ...'\cf2 \strokec5  \cf2 \strokec7 :\cf2 \strokec5  \cf2 \strokec8 '\uc0\u38283 \u22987 \u29983 \u25104 \u23553 \u38754 '\cf2 \strokec7 \}\cf2 \strokec5 \
+          \cf2 \strokec7 </\cf2 \strokec5 button\cf2 \strokec7 >\cf2 \strokec5 \
+\
+          \cf2 \strokec7 \{\cf2 \strokec5 error \cf2 \strokec7 &&\cf2 \strokec5  \cf2 \strokec7 <\cf2 \strokec5 p className\cf2 \strokec7 =\cf2 \strokec8 "text-red-400 mt-4"\cf2 \strokec7 >\{\cf2 \strokec5 error\cf2 \strokec7 \}</\cf2 \strokec5 p\cf2 \strokec7 >\}\cf2 \strokec5 \
+\
+          \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "w-full mt-8 flex flex-col items-center gap-8"\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec7 \{\cf2 \strokec5 loading \cf2 \strokec7 &&\cf2 \strokec5  \cf2 \strokec7 (\cf2 \strokec5 \
+              \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "flex flex-col items-center justify-center gap-4"\cf2 \strokec7 >\cf2 \strokec5 \
+                  \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "w-16 h-16 border-4 border-dashed rounded-full animate-spin border-amber-400"\cf2 \strokec5 ></div\cf2 \strokec7 >\cf2 \strokec5 \
+                  \cf2 \strokec7 <\cf2 \strokec5 p className\cf2 \strokec7 =\cf2 \strokec8 "text-gray-300"\cf2 \strokec7 >\cf2 \strokec6 AI\cf2 \strokec5  \cf2 \strokec11 \uc0\u27491 \u22312 \u31359 \u36234 \u26178 \u31354 \u65292 \u20840 \u21147 \u32362 \u35069 \u20013 \cf2 \strokec7 ...</\cf2 \strokec5 p\cf2 \strokec7 >\cf2 \strokec5 \
+              \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec7 )\}\cf2 \strokec5 \
+            \
+            \cf2 \strokec7 \{\cf2 \strokec5 imageUrl \cf2 \strokec7 &&\cf2 \strokec5  \cf2 \strokec7 !\cf2 \strokec5 loading \cf2 \strokec7 &&\cf2 \strokec5  \cf2 \strokec7 (\cf2 \strokec5 \
+              \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "w-full max-w-sm bg-gray-800 rounded-lg shadow-2xl p-4 border border-gray-700"\cf2 \strokec7 >\cf2 \strokec5 \
+                  \cf2 \strokec7 <\cf2 \strokec5 img\
+                    src\cf2 \strokec7 =\{\cf2 \strokec5 imageUrl\cf2 \strokec7 \}\cf2 \strokec5 \
+                    alt\cf2 \strokec7 =\cf2 \strokec8 "Generated 'Crest of the Royal Family' style cover"\cf2 \strokec5 \
+                    className\cf2 \strokec7 =\cf2 \strokec8 "w-full rounded-md object-contain"\cf2 \strokec5 \
+                  />\
+                  \cf2 \strokec7 <\cf2 \strokec5 div className\cf2 \strokec7 =\cf2 \strokec8 "mt-4"\cf2 \strokec7 >\cf2 \strokec5 \
+                    \cf2 \strokec7 <\cf2 \strokec5 h3 className\cf2 \strokec7 =\cf2 \strokec8 "text-lg font-bold text-amber-300"\cf2 \strokec7 >\cf2 \strokec11 \uc0\u20778 \u21270 \u24460 \u30340 \u33521 \u25991 \u25552 \u31034 \u35422 \u65306 \cf2 \strokec7 </\cf2 \strokec5 h3\cf2 \strokec7 >\cf2 \strokec5 \
+                    \cf2 \strokec7 <\cf2 \strokec5 p className\cf2 \strokec7 =\cf2 \strokec8 "text-gray-300 bg-gray-900 p-3 rounded-md mt-2 text-sm"\cf2 \strokec7 >\cf2 \strokec5 \
+                      \cf2 \strokec7 \{\cf2 \strokec5 optimizedPrompt\cf2 \strokec7 \}\cf2 \strokec5 \
+                    \cf2 \strokec7 </\cf2 \strokec5 p\cf2 \strokec7 >\cf2 \strokec5 \
+                  \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+              \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+            \cf2 \strokec7 )\}\cf2 \strokec5 \
+          \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+        \cf2 \strokec7 </\cf2 \strokec5 main\cf2 \strokec7 >\cf2 \strokec5 \
+      \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+    \cf2 \strokec7 </\cf2 \strokec5 div\cf2 \strokec7 >\cf2 \strokec5 \
+  \cf2 \strokec7 );\cf2 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \strokec7 \}\cf2 \strokec5 \
+\
+}
